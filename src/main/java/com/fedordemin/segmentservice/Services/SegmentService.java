@@ -25,6 +25,11 @@ public class SegmentService {
         this.usRepo = usRepo;
     }
 
+    public void getSegmentById(Long id) {
+        segmentRepo.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Segment not found"));
+    }
+
     public Segment createSegment(CreateSegmentRequest r) {
         Segment s = new Segment();
         s.setCode(r.getCode());
